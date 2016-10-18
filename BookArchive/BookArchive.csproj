@@ -43,11 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="BookArchive.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="IThing.cs" />
-    <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

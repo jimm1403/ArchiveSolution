@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace BookArchive
 {
-    class BookArchive
+    public class BookArchive
     {
-        
+        Entity entity = new Entity();
+        string NL = Environment.NewLine;
+
         static void Main(string[] args)
         {
             BookArchive myBookArchive = new BookArchive();
@@ -18,11 +20,6 @@ namespace BookArchive
 
         public void Run()
         {
-            List<IThing> listOfThing = new List<IThing>();
-            IThing book = new Book();
-            IThing movie = new Movie();
-            IThing game = new Game();
-            Book newBook = new Book();
             string choice = "";
             bool run = true;
             
@@ -30,10 +27,14 @@ namespace BookArchive
             {
                 ShowMenu();
                 choice = GetUserChoice();
+                
+                
                 switch (choice)
                 {
-                    case "show book": newBook.Show(); break;
-                    case "add book": newBook.Add(); break;
+                    case "a": entity.Add(); break;
+                    case "l": entity.List(); break;
+                    case "s": entity.Search(); break;
+                    case "d": entity.Delete(); break;
                     case "exit": run = false; break;
                     default: ShowMenuSelectionError(); break;
                 }
@@ -42,20 +43,22 @@ namespace BookArchive
         }
         private string GetUserChoice()
         {
-            string userChoice = Console.ReadLine();
+            string userChoice = Console.ReadLine().ToLower(); ;
             return userChoice;
         }
-
         private void ShowMenu()
         {
-            Console.WriteLine("Add, show or search");
+            Console.WriteLine("ARCHIVE V.1" + NL + "You can archive(A), list(L) search(S) and delete(D)"
+                + NL + "Books, Movies or Games that you own.");
         }
-
         private void ShowMenuSelectionError()
         {
             Console.WriteLine("Please try again(Click Enter)");
             Console.ReadKey();
             Console.Clear();
         }
+        
+
+        
     }
 }
