@@ -9,9 +9,9 @@ namespace BookArchive
 {
     public class BookArchive
     {
-        Entity entity = new Entity();
         string NL = Environment.NewLine;
-
+        DatabaseFacade dbf = new DatabaseFacade();
+        UIFacade uif = new UIFacade();
         static void Main(string[] args)
         {
             BookArchive myBookArchive = new BookArchive();
@@ -25,40 +25,56 @@ namespace BookArchive
             
             do
             {
-                ShowMenu();
+                Menu();
                 choice = GetUserChoice();
                 
                 
                 switch (choice)
                 {
-                    case "a": entity.Add(); break;
-                    case "l": entity.List(); break;
-                    case "s": entity.Search(); break;
-                    case "d": entity.Delete(); break;
-                    case "exit": run = false; break;
-                    default: ShowMenuSelectionError(); break;
+                    case "a": Add();            break;
+                    case "l": List();           break;
+                    case "s": Search();         break;
+                    //case "d": ;               break;
+                    case "exit": run = false;   break;
+                    default: SelectionError();  break;
                 }
 
             } while (run);  
         }
-        private string GetUserChoice()
+        void List()
+        {
+            Console.WriteLine(dbf.List());
+            Console.ReadKey();
+            Console.Clear();
+        }
+        void Search()
+        {
+            Console.WriteLine("Enter searchword");
+            Console.WriteLine(dbf.Search());
+            Console.ReadKey();
+            Console.Clear();
+        }
+        void Add()
+        {
+            uif.UIAdd();
+            Console.ReadKey();
+            Console.Clear();
+        }
+        public string GetUserChoice()
         {
             string userChoice = Console.ReadLine().ToLower(); ;
             return userChoice;
         }
-        private void ShowMenu()
+        private void Menu()
         {
-            Console.WriteLine("ARCHIVE V.1" + NL + "You can archive(A), list(L) search(S) and delete(D)"
+            Console.WriteLine("ARCHIVE V.2" + NL + "You can archive(A), list(L) search(S) and delete(D)"
                 + NL + "Books, Movies or Games that you own.");
         }
-        private void ShowMenuSelectionError()
+        private void SelectionError()
         {
             Console.WriteLine("Please try again(Click Enter)");
             Console.ReadKey();
             Console.Clear();
         }
-        
-
-        
     }
 }

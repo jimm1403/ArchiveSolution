@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UIFacade.cs" />
+    <Compile Include="DatabaseFacade.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="BookArchive.cs" />
+    <Compile Include="EntityRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
